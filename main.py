@@ -6,7 +6,7 @@ import torch
 import os
 
 
-  # Change Hugging Face cache directory to /workspace
+  # Change Hugging Face cache directory to /workspaces
 os.environ["HF_HOME"] = "/workspace/hf_cache"
 os.environ["HF_DATASETS_CACHE"] = "/workspace/hf_cache"
 os.environ["TRANSFORMERS_CACHE"] = "/workspace/hf_cache"
