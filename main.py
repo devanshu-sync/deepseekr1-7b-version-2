@@ -5,9 +5,15 @@ import torch
 # import threading
 import os
 
+
+# Change Hugging Face cache directory to /workspace
 os.environ["HF_HOME"] = "/workspace/hf_cache"
 os.environ["HF_DATASETS_CACHE"] = "/workspace/hf_cache"
 os.environ["TRANSFORMERS_CACHE"] = "/workspace/hf_cache"
+
+# Create the directory manually
+os.makedirs("/workspace/hf_cache", exist_ok=True)
+
 
 
 from transformers import AutoModelForCausalLM, AutoTokenizer
