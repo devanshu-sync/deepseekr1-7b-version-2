@@ -1,6 +1,6 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
-model_name = "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
+model_name = "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
 local_path = "./deepseek_model"
 
 # Download and save locally
