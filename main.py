@@ -3,6 +3,12 @@ import runpod
 import torch
 # import asyncio
 # import threading
+import os
+
+os.environ["HF_HOME"] = "/workspace/hf_cache"
+os.environ["HF_DATASETS_CACHE"] = "/workspace/hf_cache"
+os.environ["TRANSFORMERS_CACHE"] = "/workspace/hf_cache"
+
 
 from transformers import AutoModelForCausalLM, AutoTokenizer
 # from accelerate import init_empty_weights, load_checkpoint_and_dispatch, infer_auto_device_map
