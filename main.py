@@ -50,16 +50,37 @@ def run_model(prompt):
         
 # async def handler(event):
 def handler(event):
-    print(f"Worker Start")
-    input = event['input']
-    
-    prompt = input.get('prompt')  
+    print("Worker Start")
 
-    result = run_model(prompt)
-    # loop = asyncio.get_event_loop()
-    # result = await loop.run_in_executor(None, lambda: run_model(prompt))
+    # Extract input safely
+    user_input = event.get("input", {})
+    prompt = user_input.get("prompt")
 
-    return result
+    if not prompt:
+        return {
+            "status": "error",
+            "message": "Missing 'prompt' in input"
+        }
+
+    try:
+        # Run inference
+        generated_text = run_model(prompt)
+
+        # Clean the text (remove any special tokens)
+        clean_text = generated_text.replace("<s>", "").replace("</s>", "").strip()
+
+        return {
+            "status": "success",
+            "input_prompt": prompt,
+            "generated_text": clean_text
+        }
+
+    except Exception as e:
+        return {
+            "status": "error",
+            "message": str(e)
+        }
+
 
 # def update_request_rate(request_history):
 #     # Collects real metrics about request patterns.
